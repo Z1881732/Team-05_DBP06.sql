@@ -1,0 +1,27 @@
+1.	List of customer name, software name and qty they purchased
+         
+      	 select c.CustomerFirstName,c.CustomerLastName,s.SoftwareName, sum(i.QTYSold) TotalQtySold
+         from Customer c 
+         Join Invoice i on c.CustomerId = i.customerid
+         join software s on s.SoftwareID = i.SoftwareID
+         Group by c.CustomerFirstName,c.CustomerLastName,s.SoftwareName;
+Query 1 describes the list of customer name, software name and quantity they purchased so that we know about the customer data
+
+2.     List of software name, total number of qty sold where total software sold is more than 30.
+
+	select s.SoftwareName,sum(i.qtysold) TotalQTYSold
+        from Invoice i 
+        join software s on s.SoftwareID = i.SoftwareID
+         group by s.SoftwareName
+         Having TotalQTYSold > 30
+Query 2 describes the name of the software and shows result on how many total quantities of product is sold.
+ 
+3.     List of customers who purshased software Krish? 
+        
+ 	select c.CustomerFirstName,c.CustomerLastName,s.SoftwareName
+ 	from Customer c 
+	Join Invoice i on c.CustomerId = i.customerid
+	join software s on s.SoftwareID = i.SoftwareID
+	where s.SoftwareName = 'Krish'
+
+Query 3 shows the result on which customer bought the software named Krish
